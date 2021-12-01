@@ -109,7 +109,7 @@ class mySSA(object):
         if return_df:
             return self.X_df
     
-    def project_to_base(self):
+    def project_to_base(self,verbose=True):
         X = self.X_com
         self.S = X*X.T
         self.d = np.linalg.matrix_rank(X)
@@ -130,6 +130,8 @@ class mySSA(object):
             msg1 = msg1.format(self.d, self.r)
             msg2 = 'Characteristic of projection\t: {}'.format(self.r_characteristic)
             self._printer('DECOMPOSITION SUMMARY', msg1, msg2)
+
+
     def decompose(self, verbose=False):
         '''Perform the Singular Value Decomposition and identify the rank of the embedding subspace
         Characteristic of projection: the proportion of variance captured in the subspace'''
