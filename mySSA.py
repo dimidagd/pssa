@@ -178,7 +178,7 @@ class mySSA(object):
             return contribs
     
     @classmethod
-    def view_reconstruction(cls, *hankel, names=None, return_df=False, plot=True, symmetric_plots=False):
+    def view_reconstruction(cls, *hankel, names=None, return_df=False, plot=True, symmetric_plots=False,in_ax=None):
         '''Visualise the reconstruction of the hankel matrix/matrices passed to *hankel'''
         hankel_mat = None
         for han in hankel:
@@ -192,7 +192,7 @@ class mySSA(object):
             title += ' associated with singular value{}: {}'
             title = title.format('' if len(str(names))==1 else 's', names)
         if plot:
-            ax = hankel_full.plot(legend=False, title=title)
+            ax = hankel_full.plot(legend=False, title=title,ax=in_ax)
             if symmetric_plots:
                 velocity = hankel_full.abs().max()[0]
                 ax.set_ylim(bottom=-velocity, top=velocity)
